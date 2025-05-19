@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { jwt } from "jsonwebtoken";
+import  jwt  from "jsonwebtoken";
 
 const registerUser = asyncHandler(async (req , res) => {
   const {username, email, fullname, password} = req.body
@@ -57,8 +57,8 @@ const registerUser = asyncHandler(async (req , res) => {
 const generateAccessAndRefreshToken = async (userId) => {
   try{
     const user = await User.findById(userId);
-    const accessToken = user.generateRefreshToken()
-    const refreshToken = user.generateAccessToken()
+    const refreshToken = user.generateRefreshToken()
+    const accessToken = user.generateAccessToken()
 
     user.refreshToken = refreshToken;
     await user.save({validateBeforeSave : false})
